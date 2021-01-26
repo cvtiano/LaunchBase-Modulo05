@@ -1,0 +1,80 @@
+
+    <div>
+        <p>Nome da receita</p>
+        <input
+            type="text"
+            name="title"
+            value="{{ item.title }}"
+        >
+    </div>
+
+    <div>
+        <p>Autor da receita</p>
+        <input 
+            type="text"
+            name="author"
+            value="{{ item.author }}"
+        >
+    </div>
+
+    <div>
+        <p>Imagem da receita</p>
+        <input 
+            type="url"
+            name="image"
+            placeholder="http://..."
+            value="{{ item.image }}"
+        >
+    </div>
+
+    <div id="ingredients">
+        <p>Ingredientes</p>
+        {% for ingredient in item.ingredient %}
+        <div class="ingredient">
+            <input 
+                type="text" 
+                name="ingredient[]"
+                placeholder="Ex: 2 xícaras de açúcar."
+                value="{{ ingredient }}"
+            />
+        </div>
+        {% else %}
+        <div class="ingredient">
+            <input 
+                type="text" 
+                name="ingredient[]"
+                placeholder="Ex: 2 xícaras de açúcar."
+            />
+        </div>
+        {% endfor %}
+    </div>
+    <button type="button" class="add-ingredient">Adicionar novo ingrediente</button>
+
+    <div id="preparations">
+        <p>Modo de preparo</p>
+        {% for preparation in item.preparation %}
+        <div class="preparation">
+            <input
+                type="text" 
+                name="preparation[]"
+                placeholder="Ex: Misture todos os ingredientes muito bem..."
+                value="{{ preparation }}"
+            />
+        </div>
+        {% else %}
+        <div class="preparation">
+            <input
+                type="text" 
+                name="preparation[]"
+                placeholder="Ex: Misture todos os ingredientes muito bem..."
+            />
+        </div>
+        {% endfor %}
+    </div>
+    <button type="button" class="add-preparation">Adicionar novo passo</button>
+
+    <p>Informações adicionais</p>        
+    <textarea
+        name="plus_info"
+        value="">{{ item.plus_info|nl2br }}
+    </textarea>
