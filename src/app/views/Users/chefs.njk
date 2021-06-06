@@ -1,0 +1,37 @@
+{% extends "Users/layout.njk" %}
+
+{% block search %}
+  <div id="search">
+    <input type="search" id="search_field" placeholder="Buscar um chef">
+      <button type="submit">Buscar</button>
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <main id="site_content">
+        <section class="main-chefs">
+            {% for item in items %}
+                <div id="{{item.id}}">
+                    <div class="chef">
+                        <a href="/chefs/{{item.index}}">
+                            <img src="/assets/julia_kinoto.png" alt="Chef Julia Kinoto">
+                        </a>
+                        <div>
+                          <div class="most-content">
+                            <p>Julia Kinoto</p>
+                          </div>
+                          <div class="most-author">
+                            <p>3 Receitas</p>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}            
+        </section>
+    </main>
+
+    <script src="scripts.js"></script>
+    
+{% endblock %}
+    

@@ -1,38 +1,32 @@
 {% extends "Users/layout.njk" %}
 
+
 {% block content %}
-
-    <main>
-        <div id="banner">
-            <div id="banner_text">
-                <h1>As melhores receitas</h1>
-                <p>
-                    Aprenda a construir os melhores pratos
-                    com receitas criadas por profissionais
-                    do mundo inteiro.
-                </p>
+  <main>
+    <div id="banner">
+      <div id="banner_text">
+        <h1>As melhores receitas</h1>
+        <p>
+          Aprenda a construir os melhores pratos com receitas criadas por profissionais do mundo
+          inteiro.
+        </p>
+      </div>
+      <div id="banner_image">
+        <img src="/assets/chef.png"></div>
+      </div>
+      <section class="main-recipes">
+        {% for item in items %}
+          <div class="most-card" id="{{ item.id }}">
+            <div class="image-container">
+              <img src="{{ item.image }}" alt="Imagem de {{ item.title }}"></div>
+              <div class="most-content">
+                <p>{{ item.title }}</p>
+              </div>
+              <div class="most-author">
+                <p>{{ item.author }}</p>
+              </div>
             </div>
-            <div id="banner_image">
-                <img src="/assets/chef.png">
-            </div>
-            
-        </div>
-        
-        <section class="main-recipes">
-            {% for item in items %}
-                <div class="most-card" id="{{item.id}}" >
-                    <div class="image-container">
-                        <img src="{{item.image}}" alt="Imagem de {{item.title}}">
-                    </div>
-                    <div class="most-content">
-                        <p>{{item.title}}</p>
-                    </div>
-                    <div class="most-author">
-                        <p>{{item.author}}</p>
-                    </div>
-                </div>
-            {% endfor %}
+          {% endfor %}
         </section>
-    </main>
-
+  </main>
 {% endblock %}

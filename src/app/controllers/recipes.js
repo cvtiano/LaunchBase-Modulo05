@@ -43,12 +43,12 @@ module.exports = {
         for(recipe in data.recipes) {
             recipesList.push(data.recipes[recipe]);
     }
-    return res.render("Admin/list", { items: recipesList });
+    return res.render("Admin/recipes/recipe-list", { items: recipesList });
 
     },
 
     create(req, res){
-        return res.render("Admin/create");
+        return res.render("Admin/recipes/create");
     },
 
     show(req, res){
@@ -62,7 +62,7 @@ module.exports = {
     if (!rec) {
         return res.send("Recipe not found!")
     }    
-    return res.render("Admin/show", { item: rec });
+    return res.render("Admin/recipes/show", { item: rec });
 
     },
 
@@ -77,7 +77,7 @@ module.exports = {
     if (!rec) {
         return res.send("Recipe not found!")
     }
-    return res.render("Admin/edit", { item: rec });
+    return res.render("Admin/recipes/edit", { item: rec });
     },
 
     /* === POST, PUT, DELETE METHODS === */
@@ -92,7 +92,7 @@ module.exports = {
             
             let { title, author, image, ingredient, preparation, plus_info} = req.body
 
-            return
+            return (req.body)
     },
 
     put(req, res){
@@ -111,7 +111,7 @@ module.exports = {
         const filteredRecipes = data.recipes.filter(function(recipe) {
         return recipe.id != id
     });
-    return res.redirect("/admin/recipes");
+    return res.redirect("/Admin/recipes/recipes");
 
     }
 }
