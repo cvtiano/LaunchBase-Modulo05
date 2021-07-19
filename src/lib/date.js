@@ -1,5 +1,5 @@
 module.exports = {
-  age: function(timestamp) {
+  age(timestamp) {
     const today = new Date()
     const birthDate = new Date(timestamp)
   
@@ -14,7 +14,7 @@ module.exports = {
   },
 //Fazer o ajuste no retorno com Intl na data para mostrar na tela no padrão PT-BR
 
-  date: function(timestamp) {
+  date(timestamp) {
     const date = new Date(timestamp)
 
     const year = date.getUTCFullYear();
@@ -25,7 +25,8 @@ module.exports = {
       day,
       month,
       year,
-      iso: `${year}-${month}-${day}`
+      iso: `${year}-${month}-${day}`,
+      format: `${day}/${month}/${year}`
     }
   }
 }

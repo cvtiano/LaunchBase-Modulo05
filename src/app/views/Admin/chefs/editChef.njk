@@ -10,11 +10,12 @@
                 <input 
                     type="hidden" 
                     name="id" 
-                    value={{item.id}}
+                    value={{chef.id}}
                 >
                 <button 
                     class="btn" 
-                    id="del" 
+                    id="del"
+                    onclick="return confirm('Deseja realmente apagar?')"
                     >
                     Deletar
                 </button>
@@ -36,7 +37,7 @@
         <input 
             type="hidden" 
             name="id" 
-            value={{item.id}}
+            value={{chef.id}}
         >        
     </form>
 </section>

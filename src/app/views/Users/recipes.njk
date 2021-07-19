@@ -2,36 +2,51 @@
 
 {% block search %}
   <div id="search">
-    <input type="search" id="search_field" placeholder="Buscar uma receita">
+    <form action="/recipes" method="GET">
+      <input 
+        type="text" 
+        name="filter" 
+        id="search_field" 
+        placeholder="Buscar uma receita"
+        value={{filter}}
+      >
       <button type="submit">Buscar</button>
-    </div>
+    </form>
+  </div>
 {% endblock %}
 
 {% block content %}
 
-    <main id="site_content">
-        <section class="main-recipes">
-            {% for item in items %}
-                <div id="{{item.id}}">
-                    <div class="image-container">
-                        <a href="/recipes/{{item.index}}">
-                            <img src="{{item.image}}" 
-                            alt="Imagem de {{item.title}}"
-                            >
-                        </a>
-                    </div>
-                    <div class="most-content">
-                        <p>{{item.title}}</p>
-                    </div>
-                    <div class="most-author">
-                        <p>{{item.author}}</p>
-                    </div>
-                </div>
-            {% endfor %}            
-        </section>
-    </main>
-
-    <script src="scripts.js"></script>
-    
+  <main id="site_content">
+    <section class="main-recipes">
+      {% for recipe in recipes %}
+        <div id="{{recipe.id}}">
+            <div class="image-container">
+              <a href="/recipes/{{recipe.id}}">
+                <img src="{{recipe.image}}" 
+                alt="Imagem de {{recipe.title}}"
+              >
+              </a>
+            </div>
+            <div class="most-content">
+              <p>{{recipe.title}}</p>
+            </div>
+            <div class="most-author">
+              <p>por {{recipe.chef_name}}</p>
+            </div>
+        </div>
+      {% endfor %}            
+    </section>
+    <div class="pagination">
+      <div 
+      class="pagination-content" 
+      data-page={{pagination.page}} 
+      data-total={{pagination.total}}
+      data-filter={{filter}}
+      >
+      </div>
+    </div>
+  </main>
+  
 {% endblock %}
     

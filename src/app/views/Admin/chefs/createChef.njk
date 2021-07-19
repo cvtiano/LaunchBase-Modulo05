@@ -8,14 +8,14 @@
         <div>
             <button 
             type="submit" 
-            form="chef_form" 
+            form="chef_form"
             class="btn" id="save"
             >
             Salvar chef
             </button>
         </div>
     </div>
-    <form class="recipe-form" id="chef_form" method="POST" action="/admin/chefs">
+    <form class="recipe-form" id="chef_form" method="POST" action="/admin/chefs/">
         {% include 'Admin/chefs/fields.njk' %}
     </form>
 </section>

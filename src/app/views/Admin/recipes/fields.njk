@@ -4,17 +4,19 @@
         <input
             type="text"
             name="title"
-            value="{{ item.title }}"
+            value="{{ recipe.title }}"
         >
     </div>
 
     <div>
         <p>Autor da receita</p>
-        <input 
-            type="text"
-            name="author"
-            value="{{ item.author }}"
-        >
+        <select name="chef" id="" placeholder="Selecione um chef">
+            %{% for chef in chefOptions %}
+            <option value={{chef.id}} {% if recipe.chef_id == chef.id %} selected {% endif %}>
+                {{chef.name}}
+            </option>
+            {% endfor %}
+        </select>
     </div>
 
     <div>
@@ -23,26 +25,26 @@
             type="url"
             name="image"
             placeholder="http://..."
-            value="{{ item.image }}"
+            value="{{ recipe.image }}"
         >
     </div>
 
     <div id="ingredients">
         <p>Ingredientes</p>
-        {% for ingredient in item.ingredient %}
+        {% for ingredients in recipe.ingredients %}
         <div class="ingredient">
             <input 
                 type="text" 
-                name="ingredient[]"
+                name="ingredients[]"
                 placeholder="Ex: 2 xícaras de açúcar."
-                value="{{ ingredient }}"
+                value="{{ ingredients }}"
             />
         </div>
         {% else %}
         <div class="ingredient">
             <input 
                 type="text" 
-                name="ingredient[]"
+                name="ingredients[]"
                 placeholder="Ex: 2 xícaras de açúcar."
             />
         </div>
@@ -52,7 +54,7 @@
 
     <div id="preparations">
         <p>Modo de preparo</p>
-        {% for preparation in item.preparation %}
+        {% for preparation in recipe.preparation %}
         <div class="preparation">
             <input
                 type="text" 
@@ -75,6 +77,6 @@
 
     <p>Informações adicionais</p>        
     <textarea
-        name="plus_info"
-        value="">{{ item.plus_info|nl2br }}
+        name="information"
+        value="">{{ recipe.information|nl2br }}
     </textarea>
